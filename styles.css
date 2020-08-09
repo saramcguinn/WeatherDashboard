@@ -32,3 +32,20 @@ aside {
     float: left;
 }
 
+.cityBtn {
+    display: block;
+    width: 100%;
+}
+
+.UVLow {
+    background-color: lightgreen;
+}
+
+.UVModerate {
+    background-color: lightsalmon;
+}
+
+.UVHigh {
+    background-color: maroon;
+    color: white;
+}
