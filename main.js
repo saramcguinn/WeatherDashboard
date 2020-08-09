@@ -69,6 +69,9 @@ function getAllWeather() {
             method: "GET"
         }).then(function(response){
             tempK = response.current.temp;
+            var iconCode = response.current.weather[0].icon;
+            var currentIconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
+            $("#currentIcon").attr("src", currentIconURL);
             $("#currentTemp").text(parseInt(convertTemp(tempK)));
             $("#currentHumidity").text(response.current.humidity);
             $("#currentWind").text(response.current.wind_speed);
@@ -76,6 +79,9 @@ function getAllWeather() {
             $("#currentUV").text(UVIndex);
             rateUVIndex();
             for (var i=1; i<6; i++) {
+                var iconCode = response.daily[i].weather[0].icon;
+                var iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
+                $("#icon"+i).attr("src", iconURL);
                 $("#date"+i).text(moment().add(i,"d").format("M[/]D[/]YY"));
                 tempK = (response.daily[i].temp.day);
                 $("#forecast"+i+"Temp").text(parseInt(convertTemp(tempK)));
