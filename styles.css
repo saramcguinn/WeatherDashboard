@@ -18,6 +18,7 @@ aside {
     background-color: lightgray;
     height: 100%;
     padding: 10px;
+    float: left;
 }
 
 #citySearchAside {
@@ -28,5 +29,6 @@ aside {
 #focusCity {
     border: 2px black;
     background-color: lightgreen;
+    float: left;
 }
 
