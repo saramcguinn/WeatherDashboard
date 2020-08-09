@@ -13,14 +13,12 @@ $("#citySearchBtn").on("click", function(event) {
     cityArray.push(userInput);
     city = userInput;
     renderCityButtons();
-    getCurrentWeather();
     getAllWeather();
 })
 
 $(document).on("click", ".cityBtn", function(event) {
     event.preventDefault();
     city = $(this).attr("id");
-    getCurrentWeather();
     getAllWeather();
 })
 
@@ -33,34 +31,6 @@ function renderCityButtons() {
         newButton.attr("id", cityArray[i]);
         $("#cityButtonArea").append(newButton);
     }
-}
-
-function getCurrentWeather() {
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=354bfca1995e10eb413ecf3fc6ff2b3f";
-    
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
-        $("#cityName").text(response.name);
-        var lat = response.coord.lat;
-        var lon = response.coord.lon;
-        tempK = response.main.temp;
-        // var tempF = convertTemp(tempK);
-        $("#currentTemp").text(parseInt(convertTemp(tempK)));
-        $("#currentHumidity").text(response.main.humidity);
-        $("#currentWind").text(response.wind.speed);
-
-        var UVqueryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=354bfca1995e10eb413ecf3fc6ff2b3f&lat=" + lat + "&lon=" + lon;
-        $.ajax({
-            url: UVqueryURL,
-            method: "GET"
-        }).then(function(response){
-            UVIndex = response.value;
-            $("#currentUV").text(UVIndex);
-            rateUVIndex();
-        })
-    });
 }
 
 function convertTemp(tempK) {
@@ -90,7 +60,7 @@ function getAllWeather() {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        // $("#cityName").text(response.name);
+        $("#cityName").text(response.name);
         var lat = response.coord.lat;
         var lon = response.coord.lon;
         var nextQueryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly&appid=354bfca1995e10eb413ecf3fc6ff2b3f";
@@ -98,8 +68,14 @@ function getAllWeather() {
             url: nextQueryURL,
             method: "GET"
         }).then(function(response){
+            tempK = response.current.temp;
+            $("#currentTemp").text(parseInt(convertTemp(tempK)));
+            $("#currentHumidity").text(response.current.humidity);
+            $("#currentWind").text(response.current.wind_speed);
+            UVIndex = response.current.uvi;
+            $("#currentUV").text(UVIndex);
+            rateUVIndex();
             for (var i=1; i<6; i++) {
-                // date = moment().add(i,"d");
                 $("#date"+i).text(moment().add(i,"d").format("M[/]D[/]YY"));
                 tempK = (response.daily[i].temp.day);
                 $("#forecast"+i+"Temp").text(parseInt(convertTemp(tempK)));

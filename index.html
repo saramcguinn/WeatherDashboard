@@ -21,14 +21,14 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-4">
+            <div id="sidebar" class="col-3">
                 <h4>Search for a city:</h4>
                 <input id="cityInput" type="text"></input>
                 <button id="citySearchBtn" type="submit" class="btn btn-primary mb-2"><i
                         class="fas fa-search"></i></button>
                 <div id="cityButtonArea"></div>
             </div>
-            <div class="col-8">
+            <div id="main" class="col-9">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -42,12 +42,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div id="forecastHeading" class="row">
                     <h3>5-Day Forecast</h3>
                 </div>
-                <div class="row">
-                    <div class="col-2">
-                        <div class="card">
+                <div id="forecastCards" class="row">
+                    <div class="col">
+                        <div class="card forecast-card">
                             <div class="card-body">
                                 <h5 id="date1" class="card-title">day1</h5>
                                 <p>Temp: <span id="forecast1Temp"></span>&deg;F</p>
@@ -55,8 +55,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-2">
-                        <div class="card">
+                    <div class="col">
+                        <div class="card forecast-card">
                             <div class="card-body">
                                 <h5 id="date2" class="card-title">day2</h5>
                                 <p>Temp: <span id="forecast2Temp"></span>&deg;F</p>
@@ -64,8 +64,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-2">
-                        <div class="card">
+                    <div class="col">
+                        <div class="card forecast-card">
                             <div class="card-body">
                                 <h5 id="date3" class="card-title">day3</h5>
                                 <p>Temp: <span id="forecast3Temp"></span>&deg;F</p>
@@ -73,8 +73,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-2">
-                        <div class="card">
+                    <div class="col">
+                        <div class="card forecast-card">
                             <div class="card-body">
                                 <h5 id="date4" class="card-title">day4</h5>
                                 <p>Temp: <span id="forecast4Temp"></span>&deg;F</p>
@@ -82,8 +82,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-2">
-                        <div class="card">
+                    <div class="col">
+                        <div class="card forecast-card">
                             <div class="card-body">
                                 <h5 id="date5" class="card-title">day5</h5>
                                 <p>Temp: <span id="forecast5Temp"></span>&deg;F</p>
