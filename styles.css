@@ -1,0 +1,32 @@
+header {
+    text-align: center;
+    background-color: aqua;
+    margin-bottom: 0px;
+    padding: 10px;
+}
+
+.container {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.row {
+    margin: 0px;
+}
+
+aside {
+    background-color: lightgray;
+    height: 100%;
+    padding: 10px;
+}
+
+#citySearchAside {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+#focusCity {
+    border: 2px black;
+    background-color: lightgreen;
+}
+
