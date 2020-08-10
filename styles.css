@@ -1,3 +1,7 @@
+/***************************************************************************************
+GENERAL
+***************************************************************************************/
+
 header {
     text-align: center;
     background-color: royalblue;
@@ -8,45 +12,38 @@ header {
 }
 
 body {
-    height: 100%;
     background-image: url(Assets/sky.jfif);
-    margin: auto;
 }
 
 .container {
     text-align: center;
     margin: auto;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 150px;
+    padding-bottom: 70px;
 }
 
 #sidebar {
     background-color: lightgray;
     opacity: 80%;
     padding: 10px;
-    width: 40%;
+}
+
+#currentWeather {
+    background-image: linear-gradient(#E65100, white);
 }
 
 #forecastHeading {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 15px;
     padding-left: 15px;
-    text-align: center;
 }
 
-#citySearchAside {
-    margin-left: 0px;
-    padding-left: 0px;
+.forecast-card {
+    background-color: royalblue;
 }
 
-.cityBtn {
-    display: block;
-    width: 100%;
-    border: 1px solid white;
-    /* padding: 5px; */
-    /* margin-top: 5px; */
-}
+/***************************************************************************************
+UV INDEX SPAN COLORS
+***************************************************************************************/
 
 .UVLow {
     background-color: green;
@@ -67,25 +64,14 @@ body {
     border-radius: 10%;
 }
 
-.forecast-card {
-    background-color: royalblue;
-}
+/***************************************************************************************
+BUTTONS & PSEUDOCLASSES
+***************************************************************************************/
 
-#currentWeather {
-    background-image: linear-gradient(#E65100, #FFF59D);
-}
-
-p {
-    font-size: large;
-    font-weight: bold;
-}
-
-#currentWeather p {
-    font-size: x-large;
-}
-
-#forecastHeadingText {
-    text-align: center;
+.cityBtn {
+    display: block;
+    width: 100%;
+    border: 1px solid white;
 }
 
 .fa-window-close:hover {
@@ -94,4 +80,21 @@ p {
 
 .deleteBtn {
     float:right;
+}
+
+/***************************************************************************************
+TEXT / FONTS
+***************************************************************************************/
+
+p {
+    font-size: large;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 40pt;
+}
+
+#currentWeather p {
+    font-size: x-large;
 }
