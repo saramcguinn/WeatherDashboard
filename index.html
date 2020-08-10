@@ -19,21 +19,26 @@
     </header>
 
     <div class="container">
-
         <div class="row">
-            <div id="sidebar" class="col-3">
-                <h4>Search for a city:</h4>
-                <input id="cityInput" type="text"></input>
-                <button id="citySearchBtn" type="submit" class="btn btn-primary mb-2"><i
-                        class="fas fa-search"></i></button>
+            <div id="sidebar" class="col-md-3">
+                <h2>Search for a city:</h2>
+                <form>
+                    <input id="cityInput" type="text"></input>
+                    <button id="citySearchBtn" type="submit" class="btn btn-primary mb-2"><i
+                            class="fas fa-search"></i></button>
+                </form>
+                <button id="clearListBtn" class="btn btn-primary mb-2">Clear list</button>
                 <div id="cityButtonArea"></div>
             </div>
-            <div id="main" class="col-9">
+            <div id="main" class="col-md-9">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div id="currentWeather" class="card">
                             <div class="card-body">
-                                <h3 class="card-title"><span id="cityName"></span> - <span id="currentDate"></span> <span><image id="currentIcon" src=""></image></span></h3>
+                                <h2 class="card-title"><span id="cityName"></span> - <span id="currentDate"></span>
+                                    <span>
+                                        <image id="currentIcon" src=""></image>
+                                    </span></h2>
                                 <p>Temperature: <span id="currentTemp"></span>&deg;F</p>
                                 <p>Humidity: <span id="currentHumidity"></span>%</p>
                                 <p>Wind Speed: <span id="currentWind"></span>MPH</p>
@@ -43,13 +48,13 @@
                     </div>
                 </div>
                 <div id="forecastHeading" class="row">
-                    <h3>5-Day Forecast</h3>
+                    <h2 id="forecastHeadingText">5-Day Forecast</h2>
                 </div>
                 <div id="forecastCards" class="row">
                     <div class="col">
                         <div class="card forecast-card">
                             <div class="card-body">
-                                <h5 id="date1" class="card-title">day1</h5>
+                                <h3 id="date1" class="card-title">day1</h3>
                                 <image id="icon1" src=""></image>
                                 <p>Temp: <span id="forecast1Temp"></span>&deg;F</p>
                                 <p>Humidity: <span id="forecast1Hum"></span>%</p>
@@ -59,7 +64,7 @@
                     <div class="col">
                         <div class="card forecast-card">
                             <div class="card-body">
-                                <h5 id="date2" class="card-title">day2</h5>
+                                <h3 id="date2" class="card-title">day2</h3>
                                 <image id="icon2" src=""></image>
                                 <p>Temp: <span id="forecast2Temp"></span>&deg;F</p>
                                 <p>Humidity: <span id="forecast2Hum"></span>%</p>
@@ -69,7 +74,7 @@
                     <div class="col">
                         <div class="card forecast-card">
                             <div class="card-body">
-                                <h5 id="date3" class="card-title">day3</h5>
+                                <h3 id="date3" class="card-title">day3</h3>
                                 <image id="icon3" src=""></image>
                                 <p>Temp: <span id="forecast3Temp"></span>&deg;F</p>
                                 <p>Humidity: <span id="forecast3Hum"></span>%</p>
@@ -79,7 +84,7 @@
                     <div class="col">
                         <div class="card forecast-card">
                             <div class="card-body">
-                                <h5 id="date4" class="card-title">day4</h5>
+                                <h3 id="date4" class="card-title">day4</h3>
                                 <image id="icon4" src=""></image>
                                 <p>Temp: <span id="forecast4Temp"></span>&deg;F</p>
                                 <p>Humidity: <span id="forecast4Hum"></span>%</p>
@@ -89,7 +94,7 @@
                     <div class="col">
                         <div class="card forecast-card">
                             <div class="card-body">
-                                <h5 id="date5" class="card-title">day5</h5>
+                                <h3 id="date5" class="card-title">day5</h3>
                                 <image id="icon5" src=""></image>
                                 <p>Temp: <span id="forecast5Temp"></span>&deg;F</p>
                                 <p>Humidity: <span id="forecast5Hum"></span>%</p>
@@ -99,7 +104,21 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                </div>
+                <div class="modal-body">
+                    Sorry, we couldn't find a city with that name. Please try again.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 

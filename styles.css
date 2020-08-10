@@ -1,12 +1,16 @@
 header {
     text-align: center;
-    background-color: aqua;
-    margin-bottom: 10px;
+    background-color: royalblue;
+    opacity: 80%;
+    color: white;
+    margin-bottom: 20px;
     padding: 20px;
 }
 
 body {
     height: 100%;
+    background-image: url(Assets/sky.jfif);
+    margin: auto;
 }
 
 .container {
@@ -17,20 +21,18 @@ body {
     padding-bottom: 150px;
 }
 
-.row {
-    
-}
-
 #sidebar {
     background-color: lightgray;
+    opacity: 80%;
     padding: 10px;
-    float: left;
+    width: 40%;
 }
 
 #forecastHeading {
     margin-top: 50px;
     margin-bottom: 15px;
     padding-left: 15px;
+    text-align: center;
 }
 
 #citySearchAside {
@@ -38,30 +40,58 @@ body {
     padding-left: 0px;
 }
 
-#focusCity {
-    border: 2px black;
-    background-color: lightgreen;
-    float: left;
-}
-
 .cityBtn {
     display: block;
     width: 100%;
+    border: 1px solid white;
+    /* padding: 5px; */
+    /* margin-top: 5px; */
 }
 
 .UVLow {
-    background-color: lightgreen;
+    background-color: green;
+    padding: 5px;
+    border-radius: 10%;
 }
 
 .UVModerate {
-    background-color: lightsalmon;
+    background-color: orange;
+    padding: 5px;
+    border-radius: 10%;
 }
 
 .UVHigh {
-    background-color: maroon;
+    background-color: red;
     color: white;
+    padding: 5px;
+    border-radius: 10%;
 }
 
 .forecast-card {
-    background-color: mediumvioletred;
+    background-color: royalblue;
+}
+
+#currentWeather {
+    background-image: linear-gradient(#E65100, #FFF59D);
+}
+
+p {
+    font-size: large;
+    font-weight: bold;
+}
+
+#currentWeather p {
+    font-size: x-large;
+}
+
+#forecastHeadingText {
+    text-align: center;
+}
+
+.fa-window-close:hover {
+    color: red;
+}
+
+.deleteBtn {
+    float:right;
 }
