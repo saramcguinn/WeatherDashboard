@@ -1,7 +1,6 @@
 //Code will run only after document is ready
 $(document).ready(function () {
 
-
     /***********************************************************************************************
     DECLARE GLOBAL VARIABLES & INITIALIZE PAGE
     ***********************************************************************************************/
@@ -16,7 +15,7 @@ $(document).ready(function () {
     /***********************************************************************************************
     DEFINE FUNCTIONS
     ***********************************************************************************************/
-    
+
     //Initializes page w/ current date & city buttons from local storage, if applicable
     function initialize() {
         $("#currentDate").text(today);
@@ -59,16 +58,13 @@ $(document).ready(function () {
     function rateUVIndex() {
         if (UVIndex < 3) {
             $("#currentUV").addClass("UVLow");
-            $("#currentUV").removeClass("UVHigh");
-            $("#currentUV").removeClass("UVModerate");
+            $("#currentUV").removeClass("UVHigh UVModerate");
         } else if (UVIndex > 7) {
             $("#currentUV").addClass("UVHigh");
-            $("#currentUV").removeClass("UVModerate");
-            $("#currentUV").removeClass("UVLow");
+            $("#currentUV").removeClass("UVModerate UVLow");
         } else {
             $("#currentUV").addClass("UVModerate");
-            $("#currentUV").removeClass("UVHigh");
-            $("#currentUV").removeClass("UVLow");
+            $("#currentUV").removeClass("UVHigh UVLow");
         }
     }
 
@@ -101,7 +97,7 @@ $(document).ready(function () {
                 //Current wind speed:
                 $("#currentWind").text(response.current.wind_speed);
                 //Current UV index:
-                UVIndex = response.current.uvi;
+                UVIndex = response.current.uvi.toFixed(2);
                 $("#currentUV").text(UVIndex);
                 rateUVIndex();
                 //Loop through forecast objects in response to get/render dates, icons, temps, and humidities
@@ -121,17 +117,24 @@ $(document).ready(function () {
     /***********************************************************************************************
     ADD EVENT LISTENERS
     ***********************************************************************************************/
-    
+
     //Search button: saves city to array in local storage & creates buttons
     $("#citySearchBtn").on("click", function (event) {
         event.preventDefault();
-        city = $("#cityInput").val().trim();
-        cityArray.push(city);
-        localStorage.setItem("cities", JSON.stringify(cityArray));
-        localStorage.setItem("lastCity", city);
-        renderCityButtons();
-        getAllWeather();
-        $("#cityInput").val("");
+        var input = $("#cityInput").val();
+        //Strangely, searching for gibberish that begins with a comma returns an actual city result, so the if/else prevents that odd behavior
+        if (input.charAt(0) === ",") {
+            $("#errorModal").modal();
+            $("#cityInput").val("");
+        } else {
+            city = $("#cityInput").val().trim();
+            cityArray.push(city);
+            localStorage.setItem("cities", JSON.stringify(cityArray));
+            localStorage.setItem("lastCity", city);
+            renderCityButtons();
+            getAllWeather();
+            $("#cityInput").val("");
+        }
     })
 
     //Clear list button: clears list & clears local storage
@@ -161,9 +164,9 @@ $(document).ready(function () {
         event.stopPropogation();
     })
 
-    //Ajax error message: if user submits blank search, or if city can't be found, displays modal to user
-    //& prevents information from being stored in array/LS and does not render button
-    $(document).ajaxError(function () {
+    /*Ajax error message: if user submits blank search, or if city can't be found, displays modal to user,
+      removes item from array/LS, and re-renders buttons, effectively removing the blank/gibberish button */
+    $(document).ajaxError(function() {
         $("#errorModal").modal();
         cityArray.splice((cityArray.length - 1), 1);
         localStorage.setItem("cities", JSON.stringify(cityArray));
